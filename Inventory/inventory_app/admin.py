@@ -7,20 +7,20 @@ class EqmAdminInline(admin.TabularInline):
     extra = 1
 
 class UserAdmin(admin.ModelAdmin):
-    list_display = [ field.name for field in Users._meta.fields]
-    search_fields = [ search.name for search in Users._meta.fields]
+    list_display = [ field.name for field in Employees._meta.fields]
+    search_fields = [ search.name for search in Employees._meta.fields]
     inlines = [EqmAdminInline]
 
     class Meta:
-        model = Users
+        model = Employees
 
 
-admin.site.register(Users, UserAdmin)
+admin.site.register(Employees, UserAdmin)
 
 
 class EqmAdmin(admin.ModelAdmin):
     list_display = [ field.name for field in Equipment._meta.fields]
-    search_fields = [search.name for search in Users._meta.fields]
+    search_fields = [search.name for search in Equipment._meta.fields]
 
 
     class Meta:
