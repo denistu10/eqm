@@ -34,5 +34,8 @@ def logout_views(request):
 @login_required()
 def management_views(request):
     equipment = Equipment.objects.all()
+    users = Employees.objects.all()
+    print(Equipment.objects.all().values())
     return render(request,'panel.html', locals())
+
 

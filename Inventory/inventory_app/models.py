@@ -17,9 +17,11 @@ class Employees(models.Model):
 
 class Equipment(models.Model):
     inventory_number = models.IntegerField('Инвентарный номер:')
-    user = models.ForeignKey('Employees', name='Сотрудник:', blank=True, null=True, default="Склад")
+    user = models.ForeignKey('Employees', blank=True, null=True, default="Склад")
     name = models.TextField('Оборудование:',max_length=300)
     is_active = models.BooleanField('Активен:',default=True,)
+
+
 
     def __str__(self):
         return '%s' % self.name
