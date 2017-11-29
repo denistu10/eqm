@@ -29,3 +29,4 @@ class EqmAdmin(admin.ModelAdmin):
         model = Equipment
 
 admin.site.register(Equipment,EqmAdmin)
+admin.site.register(Type)
