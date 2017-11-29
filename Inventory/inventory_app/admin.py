@@ -17,16 +17,19 @@ class UserAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Employees, UserAdmin)
+admin.site.register(Type)
 
 
 class EqmAdmin(admin.ModelAdmin):
     list_display = [field.name for field in Equipment._meta.fields]
-    search_fields = [search.name for search in Equipment._meta.fields]
+    # search_fields = [fields.name for fields in Equipment._meta.fields]
+    search_fields = ['inventory_number','name','is_active','is_license','is_license']
 
 
 
     class Meta:
         model = Equipment
 
-admin.site.register(Equipment,EqmAdmin)
-admin.site.register(Type)
+admin.site.register(Equipment, EqmAdmin)
+
+
