@@ -41,17 +41,15 @@ def inventory_views(request):
     equipment = Equipment.objects.filter(is_active=True)
     return render(request, 'inventory.html', locals())
 
-@login_required()
-def render_csv(request):
-    response = HttpResponse(content_type='text/csv')
-    response['Content-Disposition'] = 'attachment; filename="Invetory.csv"'
-    writer = csv.writer(response)
-    equipment = Equipment.objects.filter(is_active=True)
 
-    # for i in equipment:
-    #     writer.writerow([i.inventory_number, i.name, i.type.type, i.user.user, i.is_license])
+@login_required()
+def generate_csv(request):
+    file = 'inventory.csv'
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="%s"' % file
+    equipment = Equipment.objects.filter(is_active=True)
+    writer = csv.writer(response, delimiter=';')
+    for eq in equipment:
+        writer.writerow([eq.inventory_number, eq.name,eq.type.type,eq.user.user, eq.is_license,eq.list_software])
 
     return response
-
-
-

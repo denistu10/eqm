@@ -25,8 +25,6 @@ class EqmAdmin(admin.ModelAdmin):
     # search_fields = [fields.name for fields in Equipment._meta.fields]
     search_fields = ['inventory_number','name','is_active','is_license','is_license']
 
-
-
     class Meta:
         model = Equipment
 
